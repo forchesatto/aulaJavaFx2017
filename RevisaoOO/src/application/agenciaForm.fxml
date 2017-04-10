@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgenciaController">
+   <top>
+      <Pane minHeight="20.0" minWidth="500.0" prefHeight="64.0" prefWidth="0.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="18.0" text="Sistema de contas" textFill="#791616">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="498.0" prefWidth="272.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tfNome" layoutX="140.0" layoutY="91.0" prefHeight="27.0" prefWidth="320.0" />
+            <Label layoutX="86.0" layoutY="97.0" text="Nome:" />
+            <Label layoutX="73.0" layoutY="125.0" text="Número:" />
+            <TextField fx:id="tfNumero" layoutX="140.0" layoutY="120.0" />
+            <Button fx:id="btnSalvar" layoutX="140.0" layoutY="212.0" mnemonicParsing="false" onAction="#onSalvar" text="Salvar" />
+            <Label layoutX="32.0" layoutY="30.0" text="Cadastro de Agência">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lvAgencias" layoutX="157.0" layoutY="264.0" onMouseClicked="#onEditar" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="btnNovo" layoutX="203.0" layoutY="212.0" mnemonicParsing="false" onAction="#onNovo" text="Novo" />
+            <Button fx:id="btnExcluir" layoutX="264.0" layoutY="212.0" mnemonicParsing="false" onAction="#onExcluir" text="Excluir" />
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <Pane prefHeight="498.0" prefWidth="162.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="498.0" prefWidth="93.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="38.0" prefWidth="600.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
