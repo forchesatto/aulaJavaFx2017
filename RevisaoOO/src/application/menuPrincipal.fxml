@@ -5,14 +5,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="bpPrincipal" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Cadastro">
             <items>
-              <MenuItem mnemonicParsing="false" text="Agência" />
-                  <MenuItem mnemonicParsing="false" text="Cliente" />
+              <MenuItem fx:id="miAgencia" mnemonicParsing="false" onAction="#onAgencia" text="Agência" />
+                  <MenuItem fx:id="miCliente" mnemonicParsing="false" onAction="#onCliente" text="Cliente" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ajuda">

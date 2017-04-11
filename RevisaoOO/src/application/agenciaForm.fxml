@@ -4,24 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgenciaController">
-   <top>
-      <Pane minHeight="20.0" minWidth="500.0" prefHeight="64.0" prefWidth="0.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="14.0" layoutY="18.0" text="Sistema de contas" textFill="#791616">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <Pane prefHeight="498.0" prefWidth="272.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER">
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgenciaController">
+   <children>
+      <Pane prefHeight="498.0" prefWidth="272.0" style="-fx-border-color: #666;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField fx:id="tfNome" layoutX="140.0" layoutY="91.0" prefHeight="27.0" prefWidth="320.0" />
             <Label layoutX="86.0" layoutY="97.0" text="Nome:" />
@@ -38,14 +27,5 @@
             <Button fx:id="btnExcluir" layoutX="264.0" layoutY="212.0" mnemonicParsing="false" onAction="#onExcluir" text="Excluir" />
          </children>
       </Pane>
-   </center>
-   <left>
-      <Pane prefHeight="498.0" prefWidth="162.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <Pane prefHeight="498.0" prefWidth="93.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Pane prefHeight="38.0" prefWidth="600.0" style="-fx-border-color: #666;" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+   </children>
+</AnchorPane>
