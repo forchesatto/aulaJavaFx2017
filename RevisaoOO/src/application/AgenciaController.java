@@ -1,12 +1,15 @@
 package application;
 
 import br.edu.unoesc.revisaoOO.modelo.Agencia;
+import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class AgenciaController {
@@ -21,8 +24,14 @@ public class AgenciaController {
 	private Button btnSalvar;
 
 	@FXML
-	private ListView<Agencia> lvAgencias;
-
+	private TableView<Agencia> tblAgencia;
+	
+	@FXML
+	private TableColumn<Agencia, Number> tbcNumero;
+	
+	@FXML
+	private TableColumn<Agencia, String> tbcNome;
+	
 	@FXML
 	private Button btnNovo;
 
@@ -34,7 +43,9 @@ public class AgenciaController {
 	
 	@FXML
 	void initialize(){
-		lvAgencias.setItems(FXCollections.observableArrayList());
+		tbcNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
+		tbcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		tblAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
 		novo();
 	}
 	
@@ -52,7 +63,7 @@ public class AgenciaController {
 	@FXML
 	void onEditar(MouseEvent event) {
 		if(event.getEventType().equals(MouseEvent.MOUSE_CLICKED)){
-			agencia = lvAgencias.getSelectionModel().getSelectedItem();
+			agencia = tblAgencia.getSelectionModel().getSelectedItem();
 			editando = true;
 			tfNome.setText(agencia.getNome());
 			tfNumero.setText(agencia.getNumero().toString());
@@ -61,7 +72,8 @@ public class AgenciaController {
 
 	@FXML
 	void onExcluir(ActionEvent event) {
-		lvAgencias.getItems().remove(agencia);
+		tblAgencia.getItems().remove(agencia);
+		SimuladorBD.remover(agencia);
 		limparCampos();
 	}
 
@@ -75,9 +87,10 @@ public class AgenciaController {
 		agencia.setNome(tfNome.getText());
 		agencia.setNumero(Integer.valueOf(tfNumero.getText()));
 		if(editando){
-			lvAgencias.refresh();
+			tblAgencia.refresh();
 		} else {
-			lvAgencias.getItems().add(agencia);
+			SimuladorBD.insert(agencia);
+			tblAgencia.getItems().add(agencia);
 		}
 		novo();
 	}

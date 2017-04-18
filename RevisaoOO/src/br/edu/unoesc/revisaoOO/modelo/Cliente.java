@@ -7,6 +7,9 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private LocalDate dataNascimento;
+	
+	private Agencia agenciaPreferencial;
+	
 
 	public Cliente() {
 
@@ -50,5 +53,13 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return this.nome + " " + this.cpf;
+	}
+
+	public Agencia getAgenciaPreferencial() {
+		return agenciaPreferencial;
+	}
+
+	public void setAgenciaPreferencial(Agencia agenciaPreferencial) {
+		this.agenciaPreferencial = agenciaPreferencial;
 	}
 }

@@ -1,10 +1,13 @@
 package application;
 
+import br.edu.unoesc.revisaoOO.modelo.Agencia;
 import br.edu.unoesc.revisaoOO.modelo.Cliente;
+import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -30,10 +33,14 @@ public class ClienteController {
 	private Cliente cliente;
 	
 	private boolean editando;
+	
+	@FXML
+	private ComboBox<Agencia> cbxAgencia;
 
 	@FXML
 	public void initialize() {
 		lvCliente.setItems(FXCollections.observableArrayList());
+		cbxAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
 		novo();
 	}
 
@@ -42,6 +49,8 @@ public class ClienteController {
 		cliente.setNome(tfNome.getText());
 		cliente.setCpf(tfCpf.getText());
 		cliente.setDataNascimento(dtDataNascimento.getValue());
+		//pega do combobox e guarda no objeto agencia
+		cliente.setAgenciaPreferencial(cbxAgencia.getValue());
 		if(editando){
 			lvCliente.refresh();
 		} else {
@@ -70,6 +79,8 @@ public class ClienteController {
 			tfNome.setText(cliente.getNome());
 			tfCpf.setText(cliente.getCpf());
 			dtDataNascimento.setValue(cliente.getDataNascimento());
+			//pega do objeto e coloca no combobox
+			cbxAgencia.setValue(cliente.getAgenciaPreferencial());
 			editando = true;
 		}
 	}
