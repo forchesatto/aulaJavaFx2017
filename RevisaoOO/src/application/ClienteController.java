@@ -54,6 +54,7 @@ public class ClienteController {
 		if(editando){
 			lvCliente.refresh();
 		} else {
+			SimuladorBD.insert(cliente);
 			lvCliente.getItems().add(cliente);			
 		}
 		novo();

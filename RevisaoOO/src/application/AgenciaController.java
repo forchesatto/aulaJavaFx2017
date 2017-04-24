@@ -1,7 +1,9 @@
 package application;
 
 import br.edu.unoesc.revisaoOO.modelo.Agencia;
+import br.edu.unoesc.revisaoOO.modelo.Cliente;
 import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +33,9 @@ public class AgenciaController {
 	
 	@FXML
 	private TableColumn<Agencia, String> tbcNome;
+	
+	@FXML
+	private TableColumn<Agencia, String> tbcCliente;
 	
 	@FXML
 	private Button btnNovo;
