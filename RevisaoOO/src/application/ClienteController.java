@@ -1,5 +1,7 @@
 package application;
 
+import br.edu.unoesc.revisaoOO.componente.ListCellBean;
+import br.edu.unoesc.revisaoOO.componente.StringConverterBean;
 import br.edu.unoesc.revisaoOO.modelo.Agencia;
 import br.edu.unoesc.revisaoOO.modelo.Cliente;
 import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
@@ -40,6 +42,8 @@ public class ClienteController {
 	@FXML
 	public void initialize() {
 		lvCliente.setItems(FXCollections.observableArrayList());
+		cbxAgencia.setCellFactory((comboBox) ->{return new ListCellBean<Agencia>();});
+		cbxAgencia.setConverter(new StringConverterBean<>());
 		cbxAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
 		novo();
 	}

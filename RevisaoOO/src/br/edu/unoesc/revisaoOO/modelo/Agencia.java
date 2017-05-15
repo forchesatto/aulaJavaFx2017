@@ -2,7 +2,9 @@ package br.edu.unoesc.revisaoOO.modelo;
 
 import java.io.Serializable;
 
-public class Agencia implements Serializable{
+import br.edu.unoesc.revisaoOO.componente.RenderizaCombo;
+
+public class Agencia implements Serializable, RenderizaCombo{
 
 	private static final long serialVersionUID = -7078526979609277117L;
 	
@@ -27,7 +29,12 @@ public class Agencia implements Serializable{
 
 	@Override
 	public String toString() {
-		return this.nome + " " + this.numero;
+		return this.nome + " ----- " + this.numero;
+	}
+
+	@Override
+	public String getText() {
+		return this.nome;
 	}
 
 }

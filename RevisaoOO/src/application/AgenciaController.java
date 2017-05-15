@@ -92,6 +92,7 @@ public class AgenciaController {
 		agencia.setNome(tfNome.getText());
 		agencia.setNumero(Integer.valueOf(tfNumero.getText()));
 		if(editando){
+			SimuladorBD.atualizarAgencias();
 			tblAgencia.refresh();
 		} else {
 			SimuladorBD.insert(agencia);

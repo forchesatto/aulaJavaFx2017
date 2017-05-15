@@ -9,8 +9,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.unoesc.revisaoOO.modelo.Agencia;
-
 public class ManipuladorArquivo {
 
 	/**
@@ -39,6 +37,11 @@ public class ManipuladorArquivo {
 		}
 	}
 	
+	/**
+	 * Recupera do arquivos os dados que foram armazenados.
+	 * @param pathFile String nome do arquivo.
+	 * @return List<T> 
+	 */
 	public <T extends Serializable> List<T> recuperar(String pathFile) {
 		List<T> retorno = new ArrayList<>();
 		try {

@@ -1,11 +1,5 @@
 package br.edu.unoesc.revisaoOO.modelo;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +17,18 @@ public class SimuladorBD {
 		manipuladorArquivo = new ManipuladorArquivo();
 	}
 	
+	public static void atualizarAgencias(){
+		manipuladorArquivo.gravar(agencias, "agencia.ser");
+	}
+	
 	public static void insert(Agencia agencia) {
 		agencias.add(agencia);
-		manipuladorArquivo.gravar(agencias, "agencia.ser");
+		atualizarAgencias();
 	}
 
 	public static void remover(Agencia agencia) {
 		agencias.remove(agencia);
+		atualizarAgencias();
 	}
 
 	public static List<Agencia> getAgencias() {
