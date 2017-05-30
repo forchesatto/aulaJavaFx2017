@@ -30,6 +30,7 @@
             <Button fx:id="btnNovo" layoutX="206.0" layoutY="233.0" mnemonicParsing="false" onAction="#onNovo" text="Novo" />
             <ComboBox fx:id="cbxAgencia" layoutX="175.0" layoutY="180.0" prefHeight="27.0" prefWidth="301.0" />
             <Label layoutX="18.0" layoutY="185.0" text="Agência de preferência:" />
+            <Button fx:id="btnNovaAgencia" layoutX="489.0" layoutY="180.0" mnemonicParsing="false" onAction="#onNovaAgencia" text="Nova" />
          </children>
       </Pane>
    </children>

@@ -14,6 +14,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class ClienteController {
 
@@ -31,19 +32,37 @@ public class ClienteController {
 
 	@FXML
 	private ListView<Cliente> lvCliente;
-	
+
 	private Cliente cliente;
-	
+
 	private boolean editando;
-	
+
 	@FXML
 	private ComboBox<Agencia> cbxAgencia;
+	
+	@FXML
+	private Button btnNovaAgencia;
+	
+	@FXML
+	public void onNovaAgencia(ActionEvent event){
+		Stage stageDono = (Stage)btnNovaAgencia.getScene().getWindow();
+		AgenciaDialogFabrica agenciaDialogFabrica = 
+				new AgenciaDialogFabrica(stageDono);
+		boolean salvarClicked = agenciaDialogFabrica.showAgenciaDialog();
+		if(salvarClicked){
+			cbxAgencia.getItems().clear();
+			cbxAgencia.getItems().addAll(SimuladorBD.getAgencias());
+		}
+	}
 
 	@FXML
 	public void initialize() {
 		lvCliente.setItems(FXCollections.observableArrayList());
-		cbxAgencia.setCellFactory((comboBox) ->{return new ListCellBean<Agencia>();});
+		cbxAgencia.setCellFactory((comboBox) -> {
+			return new ListCellBean<Agencia>();
+		});
 		cbxAgencia.setConverter(new StringConverterBean<>());
+
 		cbxAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
 		novo();
 	}
@@ -53,46 +72,46 @@ public class ClienteController {
 		cliente.setNome(tfNome.getText());
 		cliente.setCpf(tfCpf.getText());
 		cliente.setDataNascimento(dtDataNascimento.getValue());
-		//pega do combobox e guarda no objeto agencia
+		// pega do combobox e guarda no objeto agencia
 		cliente.setAgenciaPreferencial(cbxAgencia.getValue());
-		if(editando){
+
+		if (editando) {
 			lvCliente.refresh();
 		} else {
 			SimuladorBD.insert(cliente);
-			lvCliente.getItems().add(cliente);			
+			lvCliente.getItems().add(cliente);
 		}
 		novo();
 	}
-	
-	private void novo(){
+
+	private void novo() {
 		editando = false;
-		cliente = new Cliente();	
+		cliente = new Cliente();
 		limparCampos();
 	}
-	
-	private void limparCampos(){
+
+	private void limparCampos() {
 		tfNome.setText("");
 		tfCpf.setText("");
 		dtDataNascimento.setValue(null);
 	}
-	
+
 	@FXML
-	void onEditar(MouseEvent mouseEvent){
-		if(mouseEvent.getEventType()
-				.equals(MouseEvent.MOUSE_CLICKED)){
-			cliente = lvCliente.getSelectionModel().getSelectedItem(); 
+	void onEditar(MouseEvent mouseEvent) {
+		if (mouseEvent.getEventType().equals(MouseEvent.MOUSE_CLICKED)) {
+			cliente = lvCliente.getSelectionModel().getSelectedItem();
 			tfNome.setText(cliente.getNome());
 			tfCpf.setText(cliente.getCpf());
 			dtDataNascimento.setValue(cliente.getDataNascimento());
-			//pega do objeto e coloca no combobox
+			// pega do objeto e coloca no combobox
 			cbxAgencia.setValue(cliente.getAgenciaPreferencial());
 			editando = true;
 		}
 	}
-	
+
 	@FXML
-	void onNovo(ActionEvent event){
+	void onNovo(ActionEvent event) {
 		novo();
 	}
-	
+
 }

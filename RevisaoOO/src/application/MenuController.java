@@ -19,7 +19,7 @@ public class MenuController {
 
 	@FXML
 	private MenuItem miCliente;
-
+	
 	@FXML
 	void onAgencia(ActionEvent event) {
 		FXMLLoader loader = new FXMLLoader();

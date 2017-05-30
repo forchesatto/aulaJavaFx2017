@@ -8,14 +8,13 @@ import javafx.stage.Stage;
 
 public class MenuPrincipal extends Application {
 
-	private static BorderPane root;
-	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			root = (BorderPane) FXMLLoader.load(getClass()
-					.getResource("menuPrincipal.fxml"));
-			Scene scene = new Scene(root);
+			FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(getClass().getResource("menuPrincipal.fxml"));
+	        BorderPane root = (BorderPane)loader.load();
+	        Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -27,10 +26,5 @@ public class MenuPrincipal extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	public static BorderPane getRoot(){
-		return root;
-	}
-	
 
 }
